@@ -6,6 +6,9 @@ class CustomButton extends StatelessWidget {
   final Widget pageToNav;
   final Color? color;
   final Color? tColor;
+  final IconData? icon;
+  final Color? iColor;
+  final double? zText;
 
   const CustomButton({
     Key? key,
@@ -13,11 +16,14 @@ class CustomButton extends StatelessWidget {
     this.pageToNav = const HomePage(),
     required this.color,
     required this.tColor,
+    this.icon,
+    this.iColor,
+    this.zText,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return ElevatedButton.icon(
       onPressed: () => Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => pageToNav,
@@ -28,11 +34,16 @@ class CustomButton extends StatelessWidget {
         backgroundColor: color,
         shadowColor: Colors.transparent,
       ),
-      child: Text(
+      icon: Icon(
+        icon,
+        color: iColor,
+        size: 18,
+      ),
+      label: Text(
         text,
         style: TextStyle(
           color: tColor,
-          fontSize: 14,
+          fontSize: zText,
         ),
       ),
     );
